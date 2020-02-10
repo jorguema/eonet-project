@@ -1,0 +1,26 @@
+<div class="header">
+    <h1>Event Detail</h1>
+</div>
+<div class="content">
+    <div class="custom-loader" *ngIf="loading">
+        <div class="lds-dual-ring"></div>
+    </div>
+
+    <div *ngIf="!loading">
+        <div>
+            <h3> Identifier: <span class="light">{{event.id}}</span> </h3>
+            <h3> Title: <span class="light">{{event.title}}</span> </h3>
+            <h3> Status: <span class="light">{{event.status==0 ? 'Open': 'Closed'}}</span> <span class="light" *ngIf="event.status==1"> - {{event['closed'] | date: 'MM/dd/yyyy'}}</span></h3>
+            <h3> Link: <span class="light"><a href="{{event.link}}" target="_blank">{{event.link}}</a></span> </h3>
+            <h3> Description: <span class="light">{{event.description}}</span> </h3>
+            <h3> Categories: </h3>
+            <div *ngFor="let category of event.categories" class="categories">
+                <h4> Identifier: <span class="light">{{category.id}}</span></h4>
+                <h4> Title: <span class="light">{{category.title}}</span></h4>
+                <h4> Link: <span class="light"><a href="{{category.link}}" target="_blank">{{category.link}}</a></span></h4>
+                <h4> Description: <span class="light">{{category.description}}</span></h4>
+                <h4> Layers: <span class="light"><a href="{{category.layers}}" target="_blank">{{category.layers}}</a></span></h4>
+            </div>
+        </div>
+    </div>
+</div>
